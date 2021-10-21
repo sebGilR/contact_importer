@@ -28,6 +28,9 @@ gem 'jbuilder', '~> 2.7'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'devise'
+gem 'credit_card_validations'
+gem 'phony_rails'
+gem 'validates_timeliness', '~> 6.0.0.alpha1'
 
 group :development, :test do
   gem 'factory_bot_rails'
