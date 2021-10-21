@@ -3,9 +3,9 @@ FactoryBot.define do
     name { "Contact name" }
     email
     birth_date { DateTime.now }
-    phone { "000-000-00-00" }
+    phone { "3226710001" }
     address { "Some address" }
-    cc { "371449635398431" }
+    cc { CreditCardValidations::Factory.random(:amex) }
     cc_franchise { "American Express" }
     association :user
   end
