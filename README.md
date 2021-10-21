@@ -15,10 +15,9 @@ entered are correctly formatted.
 - Email and password sign in
 
 ### Features not added
-- Username sign in/up. Due to time constraints, I decided to use Devise but didn't get enough time for modifying it to work with only a username, but this is possible.
+- Username sign in/up. Due to time constraints I decided to use Devise but didn't get enough time for modifying it to work with only a username, but this is possible.
 - Viewing historical file uploads and state, not enough time to implement this feature. But it would have required an additional model to keep track of the files and related data.
 - Contact name format validation is also missing, run into regex issues and left it out to prioritize other features.
-- Allowing the user to map CSV columns to Contact attributes was also not possible during the time provided.
 
 ## Prerequisites
 
