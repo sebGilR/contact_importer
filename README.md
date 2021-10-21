@@ -1,24 +1,64 @@
-# README
+# Contact Importer
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The application allows users to upload contact files in CSV format and process them in order
+to generate a unified contact file. The contacts must be associated with the user who imported
+them into the platform. When uploading the files, the application must validate that the fields
+entered are correctly formatted.
 
-Things you may want to cover:
+## Features Added
+- Unit testing
+- CSV contact import
+- Validation for unique contact email per user
+- Credit card validation
+- Phone number validation
+- CRUD operations for contacts
+- Email and password sign in
 
-* Ruby version
+### Features not added
+- Username sign in/up. Due to time constraints, I decided to use Devise but didn't get enough time for modifying it to work with only a username, but this is possible.
+- Viewing historical file uploads and state, not enough time to implement this feature. But it would have required an additional model to keep track of the files and related data.
+- Contact name format validation is also missing, run into regex issues and left it out to prioritize other features.
 
-* System dependencies
+## Prerequisites
 
-* Configuration
+- postgresql installed and running
+- nodejs
+- ruby 3.0.2
 
-* Database creation
+## Local Setup
 
-* Database initialization
+```
+git clone https://github.com/sebGilR/contact_importer.git
 
-* How to run the test suite
+cd contact_importer
 
-* Services (job queues, cache servers, search engines, etc.)
+bundle install
 
-* Deployment instructions
+rails db:create
+rails db:migrate
+rails db:seed
+```
 
-* ...
+## Usage
+
+Log in at: `http://localhost:3000/users/sign_in`
+
+Email: `user@email.com`
+
+Password: `userpassword`
+
+CSV Files for testing located in: `spec/fixtures/files`
+
+
+## Run Tests
+
+```
+rspec
+```
+
+## Gems Used for supporting some of the features
+
+- devise
+- credit_card_validations
+- phony_rails
+- validates_timeliness
