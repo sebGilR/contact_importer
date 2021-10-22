@@ -5,6 +5,7 @@ RSpec.describe Contact, type: :model do
   let(:user) { FactoryBot.create(:user) }
   let(:csv_file) { fixture_file_upload('contacts.csv', 'csv') }
   let(:csv_duplicate_email) { fixture_file_upload('duplicated_email.csv', 'csv') }
+  let(:csv_custom_names) { fixture_file_upload('custom_names.csv', 'csv') }
 
   context 'it is valid' do
     it 'with all attributes present' do
@@ -67,6 +68,16 @@ RSpec.describe Contact, type: :model do
         described_class.import(csv_file, user.id)
         expect(Contact.all.size > initial_contacts).to eq(true)
       end
+
+      it 'maps user provided column names to the database columns for each contact' do
+        initial_contacts = Contact.all.size
+        described_class.import(
+          csv_custom_names,
+          user.id,
+          { email: "email_address", phone: "phone_number", cc: "credit_card" }
+        )
+        expect(Contact.all.size > initial_contacts).to eq(true)
+      end
     end
 
     context 'CSV invalid when' do
@@ -75,6 +86,13 @@ RSpec.describe Contact, type: :model do
           described_class.import(csv_duplicate_email, user.id)
         end
         expect { run_import }.to raise_error(ActiveRecord::RecordInvalid)
+      end
+
+      it 'column names are different and the user doesn\'t provide the custom names' do
+        def run_import
+          described_class.import(csv_custom_names, user.id)
+        end
+        expect { run_import }.to raise_error(ActiveModel::UnknownAttributeError)
       end
     end
   end

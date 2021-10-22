@@ -34,9 +34,11 @@ class ContactsController < ApplicationController
 
   def import
     begin
-      Contact.import(params[:file], @user.id)
+      Contact.import(params[:file], @user.id, colums_params.to_hash)
     rescue ActiveRecord::RecordInvalid
       redirect_to contacts_path, alert: "Contact import aborted! Found duplicated emails in your CSV file."
+    rescue ActiveModel::UnknownAttributeError
+      redirect_to contacts_path, alert: "Contact import aborted! Found unknown attributes in your CSV file. Please specify your header names above."
     else
       redirect_to contacts_path, notice:  "Contacts imported successfully"
     end
@@ -74,5 +76,9 @@ class ContactsController < ApplicationController
 
     def contact_params
       params.require(:contact).permit(:name, :birth_date, :phone, :address, :cc, :email)
+    end
+
+    def colums_params
+      params.require(:columns).permit(:name, :birth_date, :phone, :address, :cc, :email)
     end
 end

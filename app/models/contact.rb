@@ -16,9 +16,16 @@ class Contact < ApplicationRecord
     self.cc_franchise = card.brand
   end
 
-  def self.import(file, user_id)
+  def self.import(file, user_id, column_names = {})
+    column_names = column_names.reject { |k, v| v.empty? }
+
     CSV.foreach(file.path, headers: true) do |row|
-      contact = Contact.new(row.to_hash)
+      row = row.to_hash
+      column_names.each do |key, value|
+        row[key] = row.delete(value)
+      end
+
+      contact = Contact.new(row)
       contact.user_id = user_id
 
       contact.save!

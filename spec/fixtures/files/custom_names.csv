@@ -1,0 +1,6 @@
+name,email_address,birth_date,phone_number,address,credit_card
+Sebastian,sebas@sebas.com,"Thu, 21 Oct 2021 10:13:14 -0500",3222520000,Some address,344602741888802
+User 3,sebas2@sebas.com,"Thu, 21 Oct 2021 10:13:14 -0502",3222520000,Some address,30569309025904
+User 5,sebas4@sebas.com,"Thu, 21 Oct 2021 10:13:14 -0504",3222520000,Some address,5555555555554444
+User 6,sebas5@sebas.com,"Thu, 21 Oct 2021 10:13:14 -0505",3222520000,Some address,4111111111111111
+User 7,sebas6@sebas.com,"Thu, 21 Oct 2021 10:13:14 -0506",3222520000,Some address,3572664101387242389
