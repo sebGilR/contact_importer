@@ -6,6 +6,8 @@ them into the platform. When uploading the files, the application must validate 
 entered are correctly formatted.
 
 ## Features Added
+
+- Support for custom names. The user can provide the name they used for each column and the backend does the appropriate mapping.
 - Unit testing
 - CSV contact import
 - Validation for unique contact email per user
