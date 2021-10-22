@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+
 
 <h1>Contacts</h1>
 
@@ -37,11 +37,36 @@
 </table>
 
 <br>
-
+<style>
+  .column_labels {
+    text-transform: lowercase;
+    margin-top: 10px;
+    display: inline-block;
+    width: 100px;
+  }
+</style>
 <h3>Import Contacts</h3>
 <%= form_tag import_contacts_path, multipart: true do %>
+  <p>
+    If your CSV file has different column headers to the ones below, please specify their name, otherwise leave the following fields empty.
+  </p>
+  <%= label :name, "name", class: "column_labels" %>
+  <%= text_field :columns, :name %><br>
+  <%= label :email, "email", class: "column_labels" %>
+  <%= text_field :columns, :email %><br>
+  <%= label :birth_date, "birth_date", class: "column_labels" %>
+  <%= text_field :columns, :birth_date %><br>
+  <%= label :phone, "phone", class: "column_labels" %>
+  <%= text_field :columns, :phone %><br>
+  <%= label :address, "address", class: "column_labels" %>
+  <%= text_field :columns, :address %><br>
+  <%= label :cc, "cc", class: "column_labels" %>
+  <%= text_field :columns, :cc %><br><br>
   <%= file_field_tag :file %>
-  <%= submit_tag "Upload contacts" %>
+  <%= submit_tag "Upload contacts CSV" %>
 <% end %>
+<p id="notice"><%= notice %></p>
+<p id="alert"><%= alert %></p>
 
+<br>
 <%= link_to 'New Contact', new_contact_path %>

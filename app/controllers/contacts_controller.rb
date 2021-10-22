@@ -33,8 +33,14 @@ class ContactsController < ApplicationController
   end
 
   def import
-    Contact.import(params[:file], @user.id)
-    redirect_to contacts_path, notice:  "Contacts imported successfully"
+    begin
+      Contact.import(params[:file], @user.id)
+    rescue ActiveRecord::RecordInvalid
+      redirect_to contacts_path, alert: "Contact import aborted! Found duplicated emails in your CSV file."
+    else
+      redirect_to contacts_path, notice:  "Contacts imported successfully"
+    end
+    
   end
 
   def update
