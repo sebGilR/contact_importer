@@ -113,6 +113,7 @@ GEM
     nokogiri (1.12.5-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
+    pagy (3.11.0)
     pg (1.2.3)
     phony (2.19.5)
     phony_rails (0.15.0)
@@ -241,6 +242,7 @@ DEPENDENCIES
   factory_bot_rails
   jbuilder (~> 2.7)
   listen (~> 3.3)
+  pagy (~> 3.5)
   pg (~> 1.1)
   phony_rails
   pry-byebug

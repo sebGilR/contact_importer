@@ -31,6 +31,7 @@ gem 'devise'
 gem 'credit_card_validations'
 gem 'phony_rails'
 gem 'validates_timeliness', '~> 6.0.0.alpha1'
+gem 'pagy', '~> 3.5'
 
 group :development, :test do
   gem 'factory_bot_rails'

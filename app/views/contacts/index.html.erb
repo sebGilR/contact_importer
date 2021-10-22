@@ -18,7 +18,7 @@
   </thead>
 
   <tbody>
-    <% @contacts.each do |contact| %>
+    <% @records.each do |contact| %>
       <tr>
         <td><%= contact.name %></td>
         <td><%= contact.birth_date %></td>
@@ -35,7 +35,7 @@
     <% end %>
   </tbody>
 </table>
-
+<%== pagy_nav(@pagy) %>
 <br>
 <style>
   .column_labels {

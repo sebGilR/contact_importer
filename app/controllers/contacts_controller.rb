@@ -4,7 +4,7 @@ class ContactsController < ApplicationController
   before_action :set_contact, only: %i[ show edit update destroy ]
 
   def index
-    @contacts = Contact.all
+    @pagy, @records = pagy(Contact.all, items: 10)
   end
 
   def show
