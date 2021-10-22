@@ -64,3 +64,4 @@ rspec
 - credit_card_validations
 - phony_rails
 - validates_timeliness
+- pagy
