@@ -5,6 +5,16 @@ to generate a unified contact file. The contacts must be associated with the use
 them into the platform. When uploading the files, the application must validate that the fields
 entered are correctly formatted.
 
+## Live Website
+[Visit website](https://contact-importer-sg.herokuapp.com/)
+
+### Demo user
+Email: `user@email.com`
+Password: `userpassword`
+
+## Demo Video
+[View Loom Video](https://www.loom.com/share/dd4e2afafc6743c894d846e3bb7cd4a6)
+
 ## Features Added
 
 - Support for custom names. The user can provide the name they used for each column and the backend does the appropriate mapping.

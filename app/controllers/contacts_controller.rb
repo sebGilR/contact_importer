@@ -2,9 +2,10 @@ class ContactsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_user, only: %i[ edit create update destroy import ]
   before_action :set_contact, only: %i[ show edit update destroy ]
+  before_action :set_contacts, only: %i[ index ]
 
   def index
-    @pagy, @records = pagy(Contact.all, items: 10)
+    @pagy, @records = pagy(@contacts, items: 10)
   end
 
   def show
@@ -66,19 +67,24 @@ class ContactsController < ApplicationController
   end
 
   private
-    def set_contact
-      @contact = Contact.find(params[:id])
-    end
 
-    def set_user
-      @user = current_user
-    end
+  def set_contacts
+    @contacts = current_user.contacts
+  end
 
-    def contact_params
-      params.require(:contact).permit(:name, :birth_date, :phone, :address, :cc, :email)
-    end
+  def set_contact
+    @contact = Contact.find(params[:id])
+  end
 
-    def colums_params
-      params.require(:columns).permit(:name, :birth_date, :phone, :address, :cc, :email)
-    end
+  def set_user
+    @user = current_user
+  end
+
+  def contact_params
+    params.require(:contact).permit(:name, :birth_date, :phone, :address, :cc, :email)
+  end
+
+  def colums_params
+    params.require(:columns).permit(:name, :birth_date, :phone, :address, :cc, :email)
+  end
 end
