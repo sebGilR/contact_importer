@@ -10,6 +10,7 @@ entered are correctly formatted.
 
 ### Demo user
 Email: `user@email.com`
+
 Password: `userpassword`
 
 ## Demo Video
@@ -19,6 +20,7 @@ Password: `userpassword`
 
 - Support for custom names. The user can provide the name they used for each column and the backend does the appropriate mapping.
 - Paginated list of contacts
+- Contacts scoped to the current user
 - Unit testing
 - CSV contact import
 - Validation for unique contact email per user
